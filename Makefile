@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/09 08:23:03 by astoll            #+#    #+#              #
+#    Updated: 2023/11/09 14:44:36 by astoll           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = ft_printf.c
+
+NAME = libftprintf.a
+OBJS = ${SRCS:.c=.o}
+LIBC = ar rcs
+FLAGS = -Wall -Wextra -Werror
+CC = cc
+RM = rm -f
+
+.c.o:
+		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+
+${NAME}: ${OBJS}
+		${LIBC} ${NAME} ${OBJS}
+
+all: ${NAME}
+
+clean:
+		${RM} ${OBJS}
+
+fclean: clean
+		${RM} ${NAME}
+
+re: fclean all
+
+.PHONY : all clean fclean re
