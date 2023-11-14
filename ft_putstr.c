@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:23:24 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:31:13 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/14 13:55:42 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/14 13:58:18 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+int	ft_putstr(char *str)
+{
+	int	i;
 
-int	ft_putchar(int c);
-int	ft_putnbr(long long n);
-int	ft_putptr(unsigned int);
-int	ft_putstr(char *str);
-
-#endif
+	i = 0;
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}

@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:23:24 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:31:13 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/14 14:49:37 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/14 15:28:25 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+int	ft_putnbr(long long n)
+{
+	int		i;
+	int		count;
+	char	buffer[64];
 
-int	ft_putchar(int c);
-int	ft_putnbr(long long n);
-int	ft_putptr(unsigned int);
-int	ft_putstr(char *str);
-
-#endif
+	i = 0;
+	count = 0;
+	if (n == 0)
+		ft_putchar('0');
+	if (n < 0)
+	{
+		count += write(1, "-", 1);
+		n = -n;
+	}
+	while (n > 0)
+	{
+		buffer[i++] = (n % 10) + '0';
+		n /= 10;
+	}
+	while (--i >= 0)
+	{
+		count += ft_putchar(buffer[i]);
+	}
+	return (count);
+}

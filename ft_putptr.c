@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:23:24 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:31:13 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/14 15:30:27 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/14 15:30:49 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putptr(va_arg(args, unsigned int))
+{
 
-int	ft_printf(const char *format, ...);
-
-int	ft_putchar(int c);
-int	ft_putnbr(long long n);
-int	ft_putptr(unsigned int);
-int	ft_putstr(char *str);
-
-#endif
+}

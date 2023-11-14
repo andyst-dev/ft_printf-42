@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:12 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 13:39:31 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/14 15:30:11 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ static int	ft_convert(va_list args, const char format)
 	if (format == 'c')
 		count += ft_putchar(va_arg(args, int));
 	else if (format == 's')
+		count += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
+		count += ft_putptr(va_arg(args, unsigned int));
 	else if (format == 'd' || format == 'i')
+		count += ft_putnbr((long)(va_arg(args, int)));
 	else if (format == 'u')
-	else if (format == 'x')
+		count += ft_putnbr((long)(va_arg(args, unsigned int)));
+	//else if (format == 'x' || format == 'X')
 	else if (format == '%')
+		count += ft_putchar('%');
 	return (count);
 }
 
@@ -37,7 +42,7 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	count = 0;
 	va_start(args, format);
-	while (format[i] != "\0")
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
