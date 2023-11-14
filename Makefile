@@ -6,11 +6,12 @@
 #    By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 08:23:03 by astoll            #+#    #+#              #
-#    Updated: 2023/11/09 14:44:36 by astoll           ###   ########.fr        #
+#    Updated: 2023/11/14 13:44:00 by astoll           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c
+SRCS =	ft_printf.c		\
+		ft_putchar.c	\
 
 NAME = libftprintf.a
 OBJS = ${SRCS:.c=.o}

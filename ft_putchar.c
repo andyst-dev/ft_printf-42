@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 08:23:24 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 13:41:01 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/14 13:39:43 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/14 13:40:42 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "ft_printf.h"
 
-int	ft_printf(const char *format, ...);
-
-int	ft_putchar(int c);
-
-#endif
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
