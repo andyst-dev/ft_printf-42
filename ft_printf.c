@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:21:12 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:32:40 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/15 14:15:56 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ static int	ft_convert(va_list args, const char format)
 	else if (format == 's')
 		count += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
-		count += ft_putptr(va_arg(args, unsigned int));
+		count += ft_putptr(va_arg(args, uintptr_t));
 	else if (format == 'd' || format == 'i')
-		count += ft_putnbr((long)(va_arg(args, int)));
+		count += ft_putnbr(va_arg(args, int));
 	else if (format == 'u')
-		count += ft_putnbr((long)(va_arg(args, unsigned int)));
-	//else if (format == 'x' || format == 'X')
+		count += ft_putnbr(va_arg(args, unsigned int));
+	else if (format == 'x' || format == 'X')
+		count += ft_puthex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		count += ft_putchar('%');
 	return (count);
@@ -35,18 +36,18 @@ static int	ft_convert(va_list args, const char format)
 
 int	ft_printf(const char *format, ...)
 {
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 	va_list	args;
 
 	i = 0;
 	count = 0;
 	va_start(args, format);
-	while (format[i])
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			count += ft_convert(args, format[i + 1]);
+			count += ft_convert(args, format[++i]);
 			i++;
 		}
 		else

@@ -6,13 +6,13 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:49:37 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:28:25 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/15 13:06:30 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long long n)
+int	ft_putnbr(long n)
 {
 	int		i;
 	int		count;
@@ -21,7 +21,7 @@ int	ft_putnbr(long long n)
 	i = 0;
 	count = 0;
 	if (n == 0)
-		ft_putchar('0');
+		count += write(1, "0", 1);
 	if (n < 0)
 	{
 		count += write(1, "-", 1);

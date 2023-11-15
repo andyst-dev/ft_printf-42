@@ -1,58 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:30:27 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/15 11:24:48 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/15 09:17:44 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/15 11:20:24 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_ptrlen(uintptr_t ptr)
+static int	ft_hexlen(unsigned int n)
 {
 	int	count;
 
 	count = 0;
-	while (ptr != 0)
+	while (n != 0)
 	{
-		ptr /= 16;
+		n /= 16;
 		count++;
 	}
 	return (count);
 }
 
-static void	ft_ptrput(uintptr_t ptr)
+static void	ft_puthexa(unsigned int n, const char format)
 {
-	if (ptr >= 16)
+	if (n >= 16)
 	{
-		ft_ptrput(ptr / 16);
-		ft_ptrput(ptr % 16);
+		ft_puthexa(n / 16, format);
+		ft_puthexa(n % 16, format);
 	}
 	else
 	{
-		if (ptr <= 9)
-			ft_putchar(ptr + '0');
+		if (n <= 9)
+			ft_putchar((n + '0'));
 		else
-			ft_putchar(ptr - 10 + 'a');
+		{
+			if (format == 'x')
+				ft_putchar((n - 10 + 'a'));
+			if (format == 'X')
+				ft_putchar((n - 10 + 'A'));
+		}
 	}
 }
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_puthex(unsigned int n, const char format)
 {
-	int	count;
-
-	count = 0;
-	count += write(1, "0x", 2);
-	if (ptr == 0)
-		count += write(1, "0", 1);
+	if (n == 0)
+		return (write(1, "0", 1));
 	else
-	{
-		ft_ptrput(ptr);
-		count += ft_ptrlen(ptr);
-	}
-	return (count);
+		ft_puthexa(n, format);
+	return (ft_hexlen(n));
 }

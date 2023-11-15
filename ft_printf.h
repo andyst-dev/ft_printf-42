@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 08:23:24 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/14 15:32:48 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/15 14:30:44 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 int	ft_printf(const char *format, ...);
 
 int	ft_putchar(int c);
-int	ft_putnbr(long long n);
-int	ft_putptr(unsigned int);
+int	ft_puthex(unsigned int n, const char format);
+int	ft_putnbr(long n);
+int	ft_putptr(uintptr_t ptr);
 int	ft_putstr(char *str);
 
 #endif
