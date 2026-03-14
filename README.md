@@ -1,9 +1,9 @@
 # ft_printf
 
 A custom implementation of `printf` developed as part of the 42 curriculum.
-This project consists of rebuilding a simplified version of the standard `printf` function, with support for a defined set of format specifiers and variadic arguments.
+`ft_printf` is a small formatted output library that reproduces the core behavior of `printf` with the conversions required by the subject.
 
-`ft_printf` was designed to strengthen core C skills around formatted output, function decomposition, and argument handling with variadic functions.
+It was a good way to build solid foundations in formatted output, function decomposition and variadic argument handling in C.
 
 ## Features
 - Reimplementation of a simplified `printf`
@@ -22,10 +22,10 @@ This project consists of rebuilding a simplified version of the standard `printf
 - `Makefile` — builds the `libftprintf.a` static library
 
 ## Mandatory part
-The project reproduces the core behavior of `printf` for the mandatory conversions required by the subject.
+The mandatory part focuses on the conversions and helper functions needed to reproduce the expected `printf` behavior.
 
 ### Main function
-- `ft_printf` — parses the format string, reads variadic arguments, dispatches each conversion, and returns the total number of printed characters
+- `ft_printf` — parses the format string, reads variadic arguments, dispatches each conversion and returns the total number of printed characters
 
 ### Supported conversions
 - `%c` — prints a single character
@@ -66,19 +66,10 @@ Rebuild everything:
 make re
 ```
 
-## Output
-The project builds a static library:
-
-```bash
-libftprintf.a
-```
-
-This library can then be linked into other C projects.
-
 ## Learning outcomes
-This project was an introduction to variadic functions and formatted output in C.
+This project was my first real introduction to variadic functions and formatted output in C.
 It helped build solid foundations in:
-- variadic argument handling with `va_start`, `va_arg`, and `va_end`
+- variadic argument handling with `va_start`, `va_arg` and `va_end`
 - output formatting logic
 - recursive or decomposed number printing
 - hexadecimal conversion
